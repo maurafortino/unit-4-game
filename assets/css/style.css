@@ -12,12 +12,6 @@ img{
     width: 75%;
 }
 
-.crystal{
-    background-color: rgba(225, 225, 225, .3);
-    border: rgba(0, 0, 0, .5) solid 10px;
-    border-radius: 5%;
-}
-
 h2{
     font-size: 1.25rem;
 }
