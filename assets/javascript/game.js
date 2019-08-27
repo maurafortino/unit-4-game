@@ -8,38 +8,45 @@ var wins = 0; //stores the wins and will be updated when user wins
 var lossesText = $("#losses"); //gives access to the losses id
 var losses = 0;// stores the losses and will be updated when user loses
 var userNumberText = $("#user-number"); //gives access to the user-number h3
-var userNumber; //this will store the user number
-var crystals = $(".crystal");
-
-
+var userNumber = 0; //this will store the user number
+var randomNumArray = [Math.floor(Math.random()*12 + 1), Math.floor(Math.random()*12 + 1), Math.floor(Math.random()*12 + 1), Math.floor(Math.random()*12 + 1)]
 //generates code for the magic number and then adds it to the HTML
+//code to display wins and losses text in the very beginning of game wins and losses should be 0
+winsText.text(wins);
+lossesText.text(losses);
+
 function randomNum(min, max){
     return Math.floor(Math.random()*(max-min+1) + min);
 };
 magicNumText.text(magicNumber);
 
 
-//function that allows crystals to be clicked and will generate a random number for each crystal
-crystals.on("click", function(){
-    for(var i = 0; i < crystals.length; i++){
-    crystals.attr("value", Math.floor(Math.random()*13));
+//creates four crystals with a different value
+
+for(var i = 0; i < randomNumArray.length; i++){
+    var crystalImages = $("<img>");
+
+    crystalImages.addClass("crystal");
+    crystalImages.attr("src", "assets/images/white-crystal.png");
+    crystalImages.attr("value", randomNumArray[i]);
+
+
+    $("#crystal-images").append(crystalImages);
+    
     }
-    return ($(this).attr("value"));
+
+$(".crystal").on("click", function(){
+    var crystalNum = parseInt($(this).attr("value"));
+    userNumber += crystalNum
+    userNumberText.text(userNumber);
 });
 
 
-//code to display wins and losses text in the very beginning of game wins and losses should be 0
-winsText.text(wins);
-lossesText.text(losses);
+if(userNumber === magicNumber){
+    console.log(wins++);
+ }
 
 
-// letterBtn.attr("data-letter", letters[i]);
-// $(".letter-button").on("click", function(){
-//     var fridgeMagnet = $("<div>");
-//     fridgeMagnet.attr("class", "letter fridge-color");
-//     fridgeMagnet.text($(this).attr("data-letter"));
-//     $("#display").append(fridgeMagnet);
-//   });
 
 
 
