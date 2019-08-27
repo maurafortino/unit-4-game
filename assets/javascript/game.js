@@ -8,7 +8,10 @@ $(document).ready(function () {
     var wins = 0; //stores the wins and will be updated when user wins
     var lossesText = $("#losses"); //gives access to the losses id
     var losses = 0;// stores the losses and will be updated when user loses
-
+    //generates code for the magic number
+    function randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
     replay();
     //uses a function to reset the game: includes new numbers for the crystals and new magic number; wins/losses will not be affected by this
     function replay() {
@@ -48,9 +51,5 @@ $(document).ready(function () {
         });
 
     }
-    //generates code for the magic number
-    function randomNum(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    };
 
 });
